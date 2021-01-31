@@ -1,0 +1,30 @@
+{
+  "name": "data-to-code",
+  "version": "0.0.0",
+  "description": "根据源数据和模板代码生成目标代码",
+  "main": "./bin/d2c.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Test successful!\""
+  },
+  "bin": {
+    "d2c": "index.js"
+  },
+  "keywords": [
+    "data",
+    "code",
+    "generator",
+    "template"
+  ],
+  "author": "knightyun",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/knightyun/data-to-code.git"
+  },
+  "bugs": {
+    "url": "https://github.com/knightyun/data-to-code/issues"
+  },
+  "homepage": "https://github.com/knightyun/data-to-code#readme",
+  "dependencies": {}
+}
