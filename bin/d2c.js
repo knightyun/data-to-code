@@ -5,12 +5,18 @@
  * @author knightyun <2386209384@qq.com>
  * @copyright Copyright (c) 2021, knightyun <https://github.com/knightyun>
  * @see <https://github.com/knightyun/data-to-code.git>
- * @version 0.0.1
+ * @version 0.0.3
+ * @todo
+ * 判断 csv 文件
+ * 完善 readme
+ * 显示默认帮助信息
+ * node 版本兼容（es6 语法问题）
+ * 自动生成 数据 与 模板 文件
  */
 
-import fs from 'fs';
-import path from 'path';
-import readline from 'readline';
+const fs = require('fs');
+const path = require('path');
+const readline = require('readline');
 
 /*
 d2c - Composite source data and code template into target code file.
