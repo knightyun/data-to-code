@@ -1,4 +1,5 @@
 {
-    name: {{name}},
-    label: {{label}},
+    name: '{{name}}',
+    label: '{{label}}',
+    required: {{required}}
 },

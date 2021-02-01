@@ -104,7 +104,7 @@ function checkFile(file) {
 function getData(file) {
     const dataObj = [];
     const headers = [];
-    const space = / +/;
+    const space = /(\t|\s)+/;
 
     return new Promise((resolve, reject) => {
         checkFile(file).then(() => {

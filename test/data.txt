@@ -1,6 +1,6 @@
-name label
-id ID
-firstName 名字
-lastName 姓氏
-age 年龄
-hobby 爱好
+name        label           required
+id          ID              true
+firstName   "Fist Name"     true
+lastName    "Last Name"     true
+age         "Age"           false
+hobby       "Hobby"         false
