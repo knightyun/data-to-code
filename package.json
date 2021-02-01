@@ -1,6 +1,6 @@
 {
   "name": "data-to-code",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "根据源数据和模板代码生成目标代码",
   "main": "./bin/d2c.js",
   "scripts": {
