@@ -1,10 +1,10 @@
 {
   "name": "data-to-code",
   "version": "0.0.4",
-  "description": "根据源数据和模板代码生成目标代码",
+  "description": "代码生成器，可根据源数据和模板代码生成目标代码\nA code generator that generates target code from source data and template code",
   "main": "./bin/d2c.js",
   "scripts": {
-    "test": "cd test && node ../bin/d2c.js && more code.txt"
+    "test": "cd test && node ../bin/d2c.js -g"
   },
   "bin": {
     "d2c": "./bin/d2c.js"
@@ -16,7 +16,7 @@
     "template"
   ],
   "author": "knightyun",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/knightyun/data-to-code.git"

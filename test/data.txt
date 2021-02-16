@@ -2,5 +2,5 @@ name        label           required
 id          ID              true
 firstName   "Fist Name"     true
 lastName    "Last Name"     true
-age         "Age"           false
-hobby       "Hobby"         false
+age         Age             false
+hobby       Hobby           false
