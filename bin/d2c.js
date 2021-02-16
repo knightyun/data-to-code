@@ -5,8 +5,6 @@
  * @author knightyun <2386209384@qq.com>
  * @copyright Copyright (c) 2021, knightyun <https://github.com/knightyun>
  * @see <https://github.com/knightyun/data-to-code.git>
- * @todo
- * 完善 readme
  */
 const fs = require('fs');
 const path = require('path');

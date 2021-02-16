@@ -3,7 +3,7 @@
         <a href="README.md">简体中文</a> | English
     </div>
 
-![logo](assets/logo.png)
+![logo](https://github.com/knightyun/data-to-code/raw/main/assets/logo.png)
 
 ![npm license](https://img.shields.io/npm/l/data-to-code)
 ![npm version](https://img.shields.io/npm/v/data-to-code)
