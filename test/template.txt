@@ -1,5 +1,5 @@
 {
-    name: '{{ name }}',
-    label: '{{ label }}',
-    required: {{ required }},
+  name: '{{ name }}',
+  label: intl.get('test.model.{{ name }}').d('{{ label }}'),
+  required: {{ required }},
 },

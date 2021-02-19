@@ -3,7 +3,7 @@
         简体中文 | <a href="README-EN.md">English</a>
     </div>
 
-![logo](https://github.com/knightyun/data-to-code/raw/main/assets/logo.png)
+![logo](https://raw.githubusercontent.com/knightyun/data-to-code/main/assets/logo.png)
 
 ![npm license](https://img.shields.io/npm/l/data-to-code)
 ![npm version](https://img.shields.io/npm/v/data-to-code)
@@ -17,9 +17,7 @@
 
 # data-to-code
 
-
 一款代码生成器，可根据指定的源数据和模板代码，合成具有重复性的业务代码
-
 
 ## 背景
 
@@ -57,9 +55,9 @@ hobby     | Hobby       | false   | ...
 // ...
 ```
 
-假设该表格有超过 20 行，甚至更多列的数据，额，简直噩梦 😱；当然，有小伙伴会选择使用正则表达式，或者一些编辑器自带的批量处理功能，似乎也不是一件轻松事儿；
+假设该表格有超过 **20 行**，甚至**更多列**的数据，额，简直噩梦 😱；当然，有小伙伴会选择使用正则表达式，或者一些编辑器自带的批量处理功能，似乎也不是一件轻松事儿；
 
-于是乎，有了这个 ~~轮子~~ 工具 🐱‍🏍;
+于是乎，有了这个 ~~轮子~~ 工具 🚲;
 
 ## 安装
 
@@ -136,11 +134,10 @@ hobby       Hobby           false
 ### 模板代码文件
 
 模板代码指一套指定格式的代码模板，提供 “**插槽**” 让工具批量插入数据并合成总代码；模板代码文件是普通的 `.txt` 文本文件，直接编写正常的代码逻辑，只是需要使用双花括号 **`{{ }}`** 引入数据文件中的 **字段**，字段两侧有无空格无所谓，如果代码本身存在双花括号，则需要进行转义（`\{\{ \}\}`）；例如本项目中的示例模板代码文件 [template.txt](https://github.com/knightyun/data-to-code/blob/main/test/template.txt) 中的内容：
-```
+```js
 {
-    name: '{{ name }}',
-    label: '{{ label }}',
-    required: {{ required }},
+  name: '{{ name }}',
+  label: intl.get('test.model.{{ name }}').d('{{ label }}'),
 },
 
 ```
@@ -152,29 +149,29 @@ hobby       Hobby           false
 利用之前提到的数据文件和模板代码文件，可以生成合成后的输出代码示例；具体步骤为 `clone` 本项目到本地后，运行测试脚本 `npm run test`，运行成功后，会提示在项目的 `test/` 目录下生成了合成代码文件 `code.txt`，内容如下：
 ```js
 {
-    name: 'id',
-    label: 'ID',
-    required: true,
+  name: 'id',
+  label: intl.get('test.model.id').d('ID'),
+  required: true,
 },
 {
-    name: 'firstName',
-    label: 'Fist Name',
-    required: true,
+  name: 'firstName',
+  label: intl.get('test.model.firstName').d('Fist Name'),
+  required: true,
 },
 {
-    name: 'lastName',
-    label: 'Last Name',
-    required: true,
+  name: 'lastName',
+  label: intl.get('test.model.lastName').d('Last Name'),
+  required: true,
 },
 {
-    name: 'age',
-    label: 'Age',
-    required: false,
+  name: 'age',
+  label: intl.get('test.model.age').d('Age'),
+  required: false,
 },
 {
-    name: 'hobby',
-    label: 'Hobby',
-    required: false,
+  name: 'hobby',
+  label: intl.get('test.model.hobby').d('Hobby'),
+  required: false,
 },
 
 ```

@@ -3,7 +3,7 @@
         <a href="README.md">简体中文</a> | English
     </div>
 
-![logo](https://github.com/knightyun/data-to-code/raw/main/assets/logo.png)
+![logo](https://raw.githubusercontent.com/knightyun/data-to-code/main/assets/logo.png)
 
 ![npm license](https://img.shields.io/npm/l/data-to-code)
 ![npm version](https://img.shields.io/npm/v/data-to-code)
@@ -18,7 +18,6 @@
 # data-to-code
 
 A code generator, which synthesizes repeatable business code from specified source data and template code.
-
 
 ## Background
 
@@ -56,9 +55,9 @@ In the front-end project, the information above needs to be typed one by one int
 // ...
 ```
 
-Suppose the table has more than 20 rows, or even more columns, ugh, it's a nightmare 😱; Of course, some people choose to use regular expressions, or some editors have built-in batch processing capabilities, which may not be easy.
+Suppose the table has more than **20 rows**, or even **more columns**, ugh, it's a nightmare 😱; Of course, some people choose to use regular expressions, or some editors have built-in batch processing capabilities, which may not be easy.
 
-As a result, this ~~wheel~~ tool was created 🐱‍🏍.
+As a result, this ~~wheel~~ tool was created 🚲.
 
 ## Installation
 
@@ -135,11 +134,10 @@ The **table header** (first line) in the data file represents the names of the d
 ### Template code file
 
 "Template code file" refers to a set of code templates in a specified format that provide "**slots**" for tools to bulk insert data and combine it into total code; The template code file is a normal `.txt` text file, directly write the normal code logic, just need to use double curly braces **`{{ }}`** to introduce the **field** in the data file, it dose not matter if there is space on both sides of the field, if the code itself has double curly braces, we need to escape it (`\{\{ \}\}`); Such as sample content in the project template code file [template.txt](https://github.com/knightyun/data-to-code/blob/main/test/template.txt):
-```
+```js
 {
-    name: '{{ name }}',
-    label: '{{ label }}',
-    required: {{ required }},
+  name: '{{ name }}',
+  label: intl.get('test.model.{{ name }}').d('{{ label }}'),
 },
 
 ```
@@ -151,29 +149,29 @@ The three fields `name`, `label` and `required` correspond to the three table he
 Using the data file and template code file mentioned earlier, you can generate a sample of the synthesized output code; Once `clone` this project to local, run the test script `npm run test`, if success, it will prompt you to generate a synthetic code file `code.txt` is under the project's `test/` directory, with the following content:
 ```js
 {
-    name: 'id',
-    label: 'ID',
-    required: true,
+  name: 'id',
+  label: intl.get('test.model.id').d('ID'),
+  required: true,
 },
 {
-    name: 'firstName',
-    label: 'Fist Name',
-    required: true,
+  name: 'firstName',
+  label: intl.get('test.model.firstName').d('Fist Name'),
+  required: true,
 },
 {
-    name: 'lastName',
-    label: 'Last Name',
-    required: true,
+  name: 'lastName',
+  label: intl.get('test.model.lastName').d('Last Name'),
+  required: true,
 },
 {
-    name: 'age',
-    label: 'Age',
-    required: false,
+  name: 'age',
+  label: intl.get('test.model.age').d('Age'),
+  required: false,
 },
 {
-    name: 'hobby',
-    label: 'Hobby',
-    required: false,
+  name: 'hobby',
+  label: intl.get('test.model.hobby').d('Hobby'),
+  required: false,
 },
 
 ```
