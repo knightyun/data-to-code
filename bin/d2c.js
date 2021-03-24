@@ -5,6 +5,9 @@
  * @author knightyun <2386209384@qq.com>
  * @copyright Copyright (c) 2021, knightyun <https://github.com/knightyun>
  * @see <https://github.com/knightyun/data-to-code.git>
+ * @todo
+ * - 文件名有 “-” 无法识别
+ * - 内置默认模板
  */
 const fs = require('fs');
 const path = require('path');
@@ -30,7 +33,9 @@ const sysLang = process.env.LANG;
 const defaultLang = 'EN';
 let LANG;
 
-// Set message language
+/**
+ * Set message language
+ */
 function setLanguage() {
     if (sysLang === 'zh_CN.UTF-8' || sysLang === 'zh_CN') {
         LANG = 'ZH';
@@ -41,7 +46,9 @@ function setLanguage() {
     }
 }
 
-// Parse and store command line arguments
+/**
+ * Parse and store command line arguments
+ */
 function parseArgs() {
     for (let i = 0; i < args.length; i++) {
         if (i === 0 || i === 1) continue;
@@ -64,21 +71,27 @@ function parseArgs() {
     }
 }
 
-// Init arg flags to false
+/**
+ * Init arg flags to false
+ */
 function initArgFlags() {
     validOptions.forEach(arg => {
         argFlags[arg] = false;
     });
 }
 
-// Set switch flags by input args
+/**
+ * Set switch flags by input args
+ */
 function setArgFlags() {
     for (let arg of argMap.keys()) {
         argFlags[arg] = true;
     }
 }
 
-// Execute action by args
+/**
+ * Execute action by args
+ */
 function executeArgs() {
     if (argFlags['-h'] || argFlags['--help']) {
         showHelp();
@@ -106,7 +119,9 @@ function executeArgs() {
     showHelp();
 }
 
-// Generate output code file
+/** 
+ * Generate output code file
+ */
 function genCodeFile() {
     const dataFile =
         argMap.get('-d') ||
@@ -180,6 +195,7 @@ function getData(file) {
                 input: stream,
             }).on('line', line => {
                 if (isFirstLine) {
+                    // Recognize the first line of file
                     headers.push(...line.split(delimiter));
                     isFirstLine = false;
                 } else {
@@ -314,10 +330,10 @@ function compositeCode(dataFile, templateFile, outFile) {
             let tmp = _template;
 
             for (let k in d) {
-                const reg = new RegExp(`{{ *${k} *}}`, 'g');
+                const reg = new RegExp(`\\{\\{ *${k.trim()} *\\}\\}`, 'g');
                 tmp = tmp.replace(reg, d[k]);
             }
-            output += tmp;
+            output += tmp + '\n';
         }
         writeOutFile(outFile, output);
     }).catch(msg => {
@@ -345,13 +361,17 @@ function writeOutFile(file, data) {
     });
 }
 
-// Show help information
+/**
+ *  Show help information
+ */
 function showHelp() {
     console.log(msgObj.help[LANG]);
     process.exit(0);
 }
 
-// Show version information
+/** 
+ * Show version information
+ */
 function showVersion() {
     const { version } = packageData;
     console.log(`${msgObj.version[LANG]}\n\n${version}`);

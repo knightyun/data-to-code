@@ -1,6 +1,8 @@
-name,label,required
+﻿name,label,required
 id,ID,true
 firstName,Fist Name,true
 lastName,Last Name,true
 age,Age,false
 hobby,Hobby,false
+phone,手机,false
+email,邮箱,false
